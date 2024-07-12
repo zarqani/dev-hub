@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "Dev Hub",
+  "version": "1.0",
+  "description": "Display GitHub contributions in new tab",
+  "permissions": ["storage", "https://api.github.com/"],
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "icons": {
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
