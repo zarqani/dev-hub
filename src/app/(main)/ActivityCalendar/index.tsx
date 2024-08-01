@@ -2,14 +2,14 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useState, useEffect, useDeferredValue } from "react";
-import GitHubCalendar, { ThemeInput } from "react-github-calendar";
+import { useState, useEffect } from "react";
 import Calender from "./Calender";
+import TypoLogo from "@/components/icons/TypoLogo";
 
 const ActivityCalendar = () => {
   const [username, setUsername] = useState("");
   const [usernameValue, setUsernameValue] = useState("");
-  const deferredUsername = useDeferredValue(usernameValue);
+  // const deferredUsername = useDeferredValue(usernameValue);
   console.log({ usernameValue });
 
   const handleSubmit = (e: any) => {
@@ -29,6 +29,9 @@ const ActivityCalendar = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="text-center">
+        <div>
+          <TypoLogo className="mx-auto mb-8" />
+        </div>
         <h1 className="text-4xl font-bold">GitHub Contributions Calendar</h1>
         <p className="mt-2 text-lg text-gray-600">Enter your GitHub username</p>
         <form onSubmit={handleSubmit}>
