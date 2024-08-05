@@ -1,8 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useState, useEffect } from "react";
 import Calender from "./Calender";
 import TypoLogo from "@/components/icons/TypoLogo";
 
@@ -10,19 +10,27 @@ const ActivityCalendar = () => {
   const [username, setUsername] = useState("");
   const [usernameValue, setUsernameValue] = useState("");
   // const deferredUsername = useDeferredValue(usernameValue);
-  console.log({ usernameValue });
+  // console.log({ usernameValue });
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    localStorage.setItem("githubUsername", username);
-    setUsernameValue(username);
+    try {
+      localStorage.setItem("githubUsername", username);
+      setUsernameValue(username);
+    } catch (error) {
+      console.error("Error in handleSubmit:", error);
+    }
   };
 
   useEffect(() => {
-    const storedUsername = localStorage.getItem("githubUsername");
-    if (storedUsername) {
-      setUsername(storedUsername);
-      setUsernameValue(storedUsername);
+    try {
+      const storedUsername = localStorage.getItem("githubUsername");
+      if (storedUsername) {
+        setUsername(storedUsername);
+        setUsernameValue(storedUsername);
+      }
+    } catch (error) {
+      console.error("Error in useEffect:", error);
     }
   }, []);
 
